@@ -79,7 +79,7 @@ const Home = () => {
             placeholder='Enter content here .....'
             onChange={(e)=>setValue(e.target.value)}
             rows={25}
-            cols={50}
+            cols={40}
           />
       </div>      
     </div>
