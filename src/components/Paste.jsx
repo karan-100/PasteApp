@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import './paste.css'
+
 import { removeFromPaste } from '../redux/pastekSlice';
 import toast from 'react-hot-toast';
 

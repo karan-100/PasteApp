@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import './Home.css'
+
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToPaste, updateToPaste } from '../redux/pastekSlice';
 const Home = () => {
+  
   const [title,setTitle]=useState("");
   const [value,setValue]=useState('');
   const allPastes=useSelector((state)=>state.paste.pastes);
@@ -17,7 +18,7 @@ const Home = () => {
       setTitle(paste.title);
       setValue(paste.content);
     }
-  },[pasteId])
+  },[pasteId,allPastes])
   function createPaste(){
     const paste ={
       title: title,
@@ -51,7 +52,7 @@ const Home = () => {
         // After creation of paste
         setTitle('');
         setValue('');
-        setSearchParams('');
+        setSearchParams({});
       }  
     }
 
@@ -59,22 +60,37 @@ const Home = () => {
 
   }
   return (
-    <div className='pasteCreate'>
-      <div className="titleDiv">
+    <div className='w-[60%] mx-auto max-sm:w-[90%] max-sm:h-[100vh]'>
+      <div className=" bg-white flex justify-center items-center p-4">
         <input 
+        className='w-[50%] h-[35px] p-3 border inset-shadow-2xs focus:outline-none'
           type="text"
           placeholder='Title'
           value={title}
           onChange={(e)=>setTitle(e.target.value)} 
         />
-        <button onClick={createPaste} className='homeButton'>
+        <button onClick={createPaste} className='ml-4 bg-blue-600 text-white px-4 py-2 rounded-md'>
           {
             pasteId? "Update Paste":"Create My Paste"
           }
         </button>
       </div>
-      <div className="contentDiv">
-          <textarea className='textArea' 
+      <div className='w-full bg-white flex justify-center flex-col items-center p-4'>
+          <div className='w-full justify-between items-center flex gap-1 p-2 border inset-shadow-2xs' >
+            <div className='flex gap-1'>
+              <div className='w-5 h-5 rounded-[50%] bg-red-500 '></div>
+              <div className='w-5 h-5 rounded-[50%]  bg-yellow-300'></div>
+              <div className='w-5 h-5 rounded-[50%]  bg-green-600'></div>
+            </div>
+            <div>
+              <button className='w-[80px] flex justify-center items-center rounded-xl  border inset-shadow-2xs  pb-1 text-white'
+                    onClick={() => {navigator.clipboard.writeText(value) 
+                      toast.success("Copied Successfully")
+                    }}><p className='text-black  text-xl'>copy</p>
+              </button>
+            </div>
+          </div>
+          <textarea className='w-full h-[500px] p-3 border inset-shadow-2xs focus:outline-none' 
             value={value}
             placeholder='Enter content here .....'
             onChange={(e)=>setValue(e.target.value)}

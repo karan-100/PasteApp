@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import './App.css'
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Paste from './components/Paste';
@@ -11,7 +10,7 @@ const router=createBrowserRouter(
     {
       path:"/",
       element:
-      <div>
+      <div className='bg-white h-screen'>
         <Navbar/>
         <Home/>
       </div>

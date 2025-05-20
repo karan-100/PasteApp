@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom';
-import './Home.css'
+
 import { useDispatch, useSelector } from 'react-redux';
 import { addToPaste, updateToPaste } from '../redux/pastekSlice';
 
