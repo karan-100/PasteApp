@@ -84,7 +84,7 @@ const Home = () => {
             </div>
             <div>
               <div className='mr-2 opacity-50'
-                    onClick={() => {navigator.clipboard.writeText(value) 
+                    onClick={() => {value && navigator.clipboard.writeText(value)
                       toast.success("Copied Successfully")
                     }}><i className="fi fi-rr-copy"></i>
               </div>
