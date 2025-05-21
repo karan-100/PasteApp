@@ -83,11 +83,11 @@ const Home = () => {
               <div className='w-5 h-5 rounded-[50%]  bg-green-600'></div>
             </div>
             <div>
-              <button className='w-[80px] flex justify-center items-center rounded-xl  border inset-shadow-2xs  pb-1 text-white'
+              <div className='mr-2 opacity-50'
                     onClick={() => {navigator.clipboard.writeText(value) 
                       toast.success("Copied Successfully")
-                    }}><p className='text-black  text-xl'>copy</p>
-              </button>
+                    }}><i className="fi fi-rr-copy"></i>
+              </div>
             </div>
           </div>
           <textarea className='w-full h-[500px] p-3 border inset-shadow-2xs focus:outline-none' 
